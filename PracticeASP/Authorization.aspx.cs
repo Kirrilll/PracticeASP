@@ -11,13 +11,13 @@ namespace PracticeASP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Info.Text = "";
         }
 
         protected void Submit(object sender, EventArgs e)
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            dictionary.Add("vasya", "123456");
+            dictionary.Add("vasya", "123456F");
             dictionary.Add("kolya", "987654");
             dictionary.Add("ivan", "789");
 
@@ -29,12 +29,12 @@ namespace PracticeASP
             {
                 if (dictionary[loginStr] == passwordStr)
                 {
+                    Session.Add("login", loginStr);
                     Response.Redirect("WelcomePage.aspx");
                     return;
                 }
             }
-            else
-                Info.Text = "Неверный логин или пароль";
+            Info.Text = "Неверный логин или пароль";
         }
     }
 }

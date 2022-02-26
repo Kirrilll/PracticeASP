@@ -11,7 +11,7 @@ namespace PracticeASP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Name.Text = Session["login"].ToString();
         }
 
         protected void endBtn_Click(object sender, EventArgs e)

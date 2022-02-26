@@ -102,6 +102,7 @@
     <form class="form" id="auth" runat="server">
         <div class="form__container login">
             <asp:Label ID="Info" runat="server" Text=""></asp:Label>
+            <br />
             <div> Логин </div>
             <asp:TextBox ID="login" runat="server"></asp:TextBox>
             &nbsp;
