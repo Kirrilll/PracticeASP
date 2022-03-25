@@ -87,6 +87,24 @@ namespace PracticeASP
         protected global::System.Web.UI.WebControls.Button ShowAdminPanelBtn;
 
         /// <summary>
+        /// ButtonUpdateProduct элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonUpdateProduct;
+
+        /// <summary>
+        /// ButtonDeleteProduct элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonDeleteProduct;
+
+        /// <summary>
         /// ProductAdminPanel элемент управления.
         /// </summary>
         /// <remarks>
@@ -105,13 +123,40 @@ namespace PracticeASP
         protected global::System.Web.UI.WebControls.TextBox TextBoxTitle;
 
         /// <summary>
-        /// TextBoчPrice элемент управления.
+        /// RequiredValidatorTitleField элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoчPrice;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredValidatorTitleField;
+
+        /// <summary>
+        /// TextBoxPrice элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxPrice;
+
+        /// <summary>
+        /// RequiredValidatorPriceField элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredValidatorPriceField;
+
+        /// <summary>
+        /// RangeValidatorPriceField элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorPriceField;
 
         /// <summary>
         /// AddBtn элемент управления.
@@ -123,12 +168,12 @@ namespace PracticeASP
         protected global::System.Web.UI.WebControls.Button AddBtn;
 
         /// <summary>
-        /// AddBtn0 элемент управления.
+        /// ClearBtn элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddBtn0;
+        protected global::System.Web.UI.WebControls.Button ClearBtn;
     }
 }

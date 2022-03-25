@@ -34,7 +34,20 @@
                 <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataProducts" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT * FROM [Product]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataProducts" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT * FROM [Product]" DeleteCommand="Delete FROM Product where Id = @Id" InsertCommand="Insert into Product(title,price) values (@title, @price)" UpdateCommand="UPDATE Product SET title = @title, price = @price where Id= @Id">
+            <DeleteParameters>
+                <asp:ControlParameter ControlID="GridViewProducts" Name="Id" PropertyName="SelectedValue" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:ControlParameter ControlID="TextBoxTitle" Name="title" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TextBoxPrice" Name="price" PropertyName="Text" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:ControlParameter ControlID="GridViewProducts" Name="title" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewProducts" Name="price" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewProducts" Name="Id" PropertyName="SelectedValue" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
         <br />
         <asp:GridView ID="GridViewOrders" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataOrders">
             <Columns>
@@ -42,26 +55,34 @@
                 <asp:BoundField DataField="description" HeaderText="Комментарий" SortExpression="description" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataOrders" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT [id_product], [description] FROM [Order] WHERE ([id_customer] = @id_customer)">
+        <asp:SqlDataSource ID="SqlDataOrders" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT [id_product], [description] FROM [Order] WHERE ([id_customer] = @id_customer)" DeleteCommand="Delete FROM Product where Id = @Id">
+            <DeleteParameters>
+                <asp:ControlParameter ControlID="GridViewProducts" Name="Id" PropertyName="SelectedValue" />
+            </DeleteParameters>
             <SelectParameters>
                 <asp:ControlParameter ControlID="GridViewCustomer" Name="id_customer" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
         <asp:Button ID="ShowAdminPanelBtn" runat="server" OnClick="ShowAdminPanelBtn_Click" Text="Добавить продукт" />
+        <asp:Button ID="ButtonUpdateProduct" runat="server" OnClick="ButtonUpdateProduct_Click" Text="Изменить продукт" />
+        <asp:Button ID="ButtonDeleteProduct" runat="server" OnClick="ButtonDeleteProduct_Click" Text="Удалить" />
         <br />
         <br />
         <br />
         <asp:Panel ID="ProductAdminPanel" runat="server" Height="188px" style="margin-top: 0px" Visible="False">
             Название:&nbsp;
             <asp:TextBox ID="TextBoxTitle" runat="server" Width="167px"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredValidatorTitleField" runat="server" ControlToValidate="TextBoxTitle" ErrorMessage="Это обязательное поле"></asp:RequiredFieldValidator>
             <br />
             Цена:
-            <asp:TextBox ID="TextBoчPrice" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBoxPrice" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredValidatorPriceField" runat="server" ControlToValidate="TextBoxTitle" ErrorMessage="Это обязательное поле"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ID="RangeValidatorPriceField" runat="server" ControlToValidate="TextBoxPrice" ErrorMessage="цена должна быть от 0 до бесконечности" MaximumValue="Infinity" MinimumValue="0" ValidateRequestMode="Disabled"></asp:RangeValidator>
             <br />
             <br />
-            <asp:Button ID="AddBtn" runat="server" Text="Добавить" />
-            &nbsp;<asp:Button ID="AddBtn0" runat="server" Text="Отменить" />
+            <asp:Button ID="AddBtn" runat="server" Text="Добавить" OnClick="AddBtn_Click" />
+            &nbsp;<asp:Button ID="ClearBtn" runat="server" Text="Отменить" OnClick="ClearBtn_Click" />
         </asp:Panel>
     </form>
 </body>

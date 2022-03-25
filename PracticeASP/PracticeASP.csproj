@@ -187,6 +187,7 @@
     <Compile Include="ChechInfo.aspx.designer.cs">
       <DependentUpon>ChechInfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
