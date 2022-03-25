@@ -11,7 +11,7 @@ namespace PracticeASP
 {
 
 
-    public partial class Registration
+    public partial class ChechInfo
     {
 
         /// <summary>
@@ -24,138 +24,111 @@ namespace PracticeASP
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// TextBoxName элемент управления.
+        /// GridViewCustomer элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxName;
+        protected global::System.Web.UI.WebControls.GridView GridViewCustomer;
 
         /// <summary>
-        /// TextBoxNameValidator элемент управления.
+        /// SqlDataCustomer элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator TextBoxNameValidator;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataCustomer;
 
         /// <summary>
-        /// TextBoxPassword элемент управления.
+        /// GridViewProducts элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPassword;
+        protected global::System.Web.UI.WebControls.GridView GridViewProducts;
 
         /// <summary>
-        /// RegularExpressionValidatorPass элемент управления.
+        /// SqlDataProducts элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorPass;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataProducts;
 
         /// <summary>
-        /// RequriedFieldPassword элемент управления.
+        /// GridViewOrders элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequriedFieldPassword;
+        protected global::System.Web.UI.WebControls.GridView GridViewOrders;
 
         /// <summary>
-        /// TextBoxConf элемент управления.
+        /// SqlDataOrders элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxConf;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataOrders;
 
         /// <summary>
-        /// PassConfCompareValidator элемент управления.
+        /// ShowAdminPanelBtn элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator PassConfCompareValidator;
+        protected global::System.Web.UI.WebControls.Button ShowAdminPanelBtn;
 
         /// <summary>
-        /// PassConfRequiredValidator элемент управления.
+        /// ProductAdminPanel элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PassConfRequiredValidator;
+        protected global::System.Web.UI.WebControls.Panel ProductAdminPanel;
 
         /// <summary>
-        /// TextBoxMail элемент управления.
+        /// TextBoxTitle элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxMail;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxTitle;
 
         /// <summary>
-        /// MailExpressionValidator элемент управления.
+        /// TextBoчPrice элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator MailExpressionValidator;
+        protected global::System.Web.UI.WebControls.TextBox TextBoчPrice;
 
         /// <summary>
-        /// TextBoxAge элемент управления.
+        /// AddBtn элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxAge;
+        protected global::System.Web.UI.WebControls.Button AddBtn;
 
         /// <summary>
-        /// AgeRangeVlalidator элемент управления.
+        /// AddBtn0 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator AgeRangeVlalidator;
-
-        /// <summary>
-        /// AgeRequiredValidator элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator AgeRequiredValidator;
-
-        /// <summary>
-        /// Button1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// ValidationSummary элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary;
+        protected global::System.Web.UI.WebControls.Button AddBtn0;
     }
 }
