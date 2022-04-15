@@ -64,20 +64,23 @@
             </UpdateParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:GridView ID="GridViewOrders" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataOrders">
+        <br />
+        <asp:GridView ID="GridViewOrders" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataOrders">
             <Columns>
-                <asp:BoundField DataField="id_product" HeaderText="Индефикатор продукта" SortExpression="id_product" />
-                <asp:BoundField DataField="description" HeaderText="Комментарий" SortExpression="description" />
+                <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                <asp:BoundField DataField="id_product" HeaderText="id_product" SortExpression="id_product" />
+                <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataOrders" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT [id_product], [description] FROM [Order] WHERE ([id_customer] = @id_customer)" DeleteCommand="Delete FROM Product where Id = @Id" InsertCommand="INSERT INTO [Order] (id_customer, id_product, description) values(@customer_id, @product_id, @comment);" UpdateCommand="UPDATE [Order] SET id_customer =@id_customer , id_product =@id_product  ,description = @description where Id = @Id ">
+        <asp:SqlDataSource ID="SqlDataOrders" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" DeleteCommand="Delete FROM [Order] where Id = @Id" InsertCommand="INSERT INTO [Order] (id_customer, id_product, description) values(@id_customer, @id_product, @description)" SelectCommand="SELECT [Id], [id_product], [description] FROM [Order] WHERE ([id_customer] = @id_customer)" UpdateCommand="UPDATE [Order] set id_customer =@id_customer  , id_product =  @id_product , description =  @description  where  Id= @Id ">
             <DeleteParameters>
-                <asp:ControlParameter ControlID="GridViewProducts" Name="Id" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewOrders" Name="Id" PropertyName="SelectedValue" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:ControlParameter ControlID="TextBoxCustomerID" Name="customer_id" PropertyName="Text" />
-                <asp:ControlParameter ControlID="TextBoxProductID" Name="product_id" PropertyName="Text" />
-                <asp:ControlParameter ControlID="TextBoxOrderComment" Name="comment" PropertyName="Text" />
+                <asp:Parameter />
+                <asp:ControlParameter ControlID="TextBoxProductID" Name="id_product" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TextBoxOrderComment" Name="description" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TextBoxCustomerID" Name="id_customer" PropertyName="Text" />
             </InsertParameters>
             <SelectParameters>
                 <asp:ControlParameter ControlID="GridViewCustomer" Name="id_customer" PropertyName="SelectedValue" Type="Int32" />
@@ -89,6 +92,8 @@
                 <asp:ControlParameter ControlID="GridViewOrders" Name="Id" PropertyName="SelectedValue" />
             </UpdateParameters>
         </asp:SqlDataSource>
+        <br />
+        <br />
         <br />
         <asp:Button ID="ShowAdminPanelBtn" runat="server" OnClick="ShowAdminPanelBtn_Click" Text="Добавить продукт" />
         <asp:Button ID="ButtonUpdateProduct" runat="server" OnClick="ButtonUpdateProduct_Click" Text="Изменить продукт" />
@@ -134,7 +139,7 @@
         </asp:Panel>
         <asp:Button ID="ButtonOpenAdminOrder" runat="server" OnClick="ButtonOpenAdminOrder_Click" Text="Добавить заказ" />
         <asp:Button ID="ButtonUpdateOrder" runat="server" OnClick="ButtonUpdateOrder_Click" Text="Изменить заказ" />
-        <asp:Button ID="ButtonDeleteOrder" runat="server" Text="Удалить заказ" />
+        <asp:Button ID="ButtonDeleteOrder" runat="server" Text="Удалить заказ" OnClick="ButtonDeleteOrder_Click" />
         <asp:Panel ID="OrderAdminPanel" runat="server" Height="119px" Visible="False">
             id_Заказчика:
             <asp:TextBox ID="TextBoxCustomerID" runat="server"></asp:TextBox>
