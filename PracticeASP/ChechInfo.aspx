@@ -24,7 +24,22 @@
                 <asp:BoundField DataField="YearofBirth" HeaderText="День рождения" SortExpression="YearofBirth" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataCustomer" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT * FROM [Customer]" OnSelecting="SqlDataSource1_Selecting"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataCustomer" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT * FROM [Customer]" OnSelecting="SqlDataSource1_Selecting" InsertCommand="INSERT INTO Customer (Name, Surname, YearofBirth) values (@name, @surname, @yearOfBith)" UpdateCommand="UPDATE Customer set Name = @Name , Surname = @Surname , YearofBirth = @YearofBirth where Id = @Id" DeleteCommand="DELETE FROM Customer where Id = @Id">
+            <DeleteParameters>
+                <asp:ControlParameter ControlID="GridViewCustomer" Name="Id" PropertyName="SelectedValue" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:ControlParameter ControlID="TextBoxCostumerName" Name="name" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TextBoxCostumerSurname" Name="surname" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TextBoxDateOdBorn" Name="yearOfBith" PropertyName="Text" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:ControlParameter ControlID="GridViewCustomer" Name="Name" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewCustomer" Name="Surname" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewCustomer" Name="YearofBirth" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewCustomer" Name="Id" PropertyName="SelectedValue" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
         <br />
         <br />
         <asp:GridView ID="GridViewProducts" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataProducts">
@@ -55,13 +70,24 @@
                 <asp:BoundField DataField="description" HeaderText="Комментарий" SortExpression="description" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataOrders" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT [id_product], [description] FROM [Order] WHERE ([id_customer] = @id_customer)" DeleteCommand="Delete FROM Product where Id = @Id">
+        <asp:SqlDataSource ID="SqlDataOrders" runat="server" ConnectionString="<%$ ConnectionStrings:TradeCompanyConnectionString %>" SelectCommand="SELECT [id_product], [description] FROM [Order] WHERE ([id_customer] = @id_customer)" DeleteCommand="Delete FROM Product where Id = @Id" InsertCommand="INSERT INTO [Order] (id_customer, id_product, description) values(@customer_id, @product_id, @comment);" UpdateCommand="UPDATE [Order] SET id_customer =@id_customer , id_product =@id_product  ,description = @description where Id = @Id ">
             <DeleteParameters>
                 <asp:ControlParameter ControlID="GridViewProducts" Name="Id" PropertyName="SelectedValue" />
             </DeleteParameters>
+            <InsertParameters>
+                <asp:ControlParameter ControlID="TextBoxCustomerID" Name="customer_id" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TextBoxProductID" Name="product_id" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TextBoxOrderComment" Name="comment" PropertyName="Text" />
+            </InsertParameters>
             <SelectParameters>
                 <asp:ControlParameter ControlID="GridViewCustomer" Name="id_customer" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
+            <UpdateParameters>
+                <asp:ControlParameter ControlID="GridViewCustomer" Name="id_customer" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewOrders" Name="id_product" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewOrders" Name="description" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="GridViewOrders" Name="Id" PropertyName="SelectedValue" />
+            </UpdateParameters>
         </asp:SqlDataSource>
         <br />
         <asp:Button ID="ShowAdminPanelBtn" runat="server" OnClick="ShowAdminPanelBtn_Click" Text="Добавить продукт" />
@@ -70,7 +96,7 @@
         <br />
         <br />
         <br />
-        <asp:Panel ID="ProductAdminPanel" runat="server" Height="188px" style="margin-top: 0px" Visible="False">
+        <asp:Panel ID="ProductAdminPanel" runat="server" Height="139px" style="margin-top: 0px" Visible="False">
             Название:&nbsp;
             <asp:TextBox ID="TextBoxTitle" runat="server" Width="167px"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredValidatorTitleField" runat="server" ControlToValidate="TextBoxTitle" ErrorMessage="Это обязательное поле"></asp:RequiredFieldValidator>
@@ -83,6 +109,45 @@
             <br />
             <asp:Button ID="AddBtn" runat="server" Text="Добавить" OnClick="AddBtn_Click" />
             &nbsp;<asp:Button ID="ClearBtn" runat="server" Text="Отменить" OnClick="ClearBtn_Click" />
+        </asp:Panel>
+        <asp:Button ID="ButtonShowCostumerAdmin" runat="server" OnClick="ButtonShowCostumerAdmin_Click" Text="Добавить покупателя" />
+        <asp:Button ID="ButtonChangeCustomer" runat="server" OnClick="ButtonChangeCustomer_Click" Text="Изменить покупателя" />
+        <asp:Button ID="ButtonDeleteCustomer" runat="server" Text="Удалить покупателя" OnClick="ButtonDeleteCustomer_Click" />
+        <br />
+        <asp:Panel ID="PanelAdminCostumer" runat="server" Height="156px" Visible="False">
+            Имя:
+            <asp:TextBox ID="TextBoxCostumerName" runat="server"></asp:TextBox>
+            <br />
+            Фамилия:
+            <asp:TextBox ID="TextBoxCostumerSurname" runat="server"></asp:TextBox>
+            <br />
+            Год рождения:
+            <asp:TextBox ID="TextBoxDateOdBorn" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="ButtonAddCostumer" runat="server" Text="Добавить" OnClick="ButtonAddCostumer_Click" />
+            <asp:Button ID="ButtonClearCostumerForm" runat="server" OnClick="ButtonClearCostumerForm_Click" Text="Отменить" />
+            <br />
+            <br />
+            <br />
+            <br />
+        </asp:Panel>
+        <asp:Button ID="ButtonOpenAdminOrder" runat="server" OnClick="ButtonOpenAdminOrder_Click" Text="Добавить заказ" />
+        <asp:Button ID="ButtonUpdateOrder" runat="server" OnClick="ButtonUpdateOrder_Click" Text="Изменить заказ" />
+        <asp:Button ID="ButtonDeleteOrder" runat="server" Text="Удалить заказ" />
+        <asp:Panel ID="OrderAdminPanel" runat="server" Height="119px" Visible="False">
+            id_Заказчика:
+            <asp:TextBox ID="TextBoxCustomerID" runat="server"></asp:TextBox>
+            <br />
+            id_продукта:
+            <asp:TextBox ID="TextBoxProductID" runat="server"></asp:TextBox>
+            <br />
+            Комментарии:
+            <asp:TextBox ID="TextBoxOrderComment" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="ButtonAddOrder" runat="server" OnClick="ButtonAddOrder_Click" Text="Добавить" />
+            <asp:Button ID="ButtonClearOrderForm" runat="server" OnClick="ButtonClearOrderForm_Click" Text="Отменить" />
+            <br />
         </asp:Panel>
     </form>
 </body>
