@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,16 +12,31 @@ namespace Calculator
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           ServiceAsmx service = new ServiceAsmx();
-            GridViewCustomers.DataSource = service.GetCustomers();
+            if(Cache["customers"] == null)
+            {
+                ServiceAsmx service = new ServiceAsmx();
+                Cache["customers"] =  service.GetCustomers();
+            }
+            GridViewCustomers.DataSource = (List<Customer>)Cache["customers"];
             GridViewCustomers.DataBind();
         }
 
         protected void GridViewCustomers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ServiceAsmx service = new ServiceAsmx();
+            
             string id = GridViewCustomers.SelectedRow.Cells[1].Text;
-            GridViewOrders.DataSource = service.GetOrders(int.Parse(id));
+
+            if(Cache[id]  == null)
+            {
+                ServiceAsmx service = new ServiceAsmx();
+                Cache[id] = service.GetOrders(int.Parse(id));
+                LabelFetchInformation.Text = "Взято из БД";
+            }
+            else
+            {
+                LabelFetchInformation.Text = "Взято из кэша";
+            }
+            GridViewOrders.DataSource = (List<Order>)Cache[id];
             GridViewOrders.DataBind();
         }
     }

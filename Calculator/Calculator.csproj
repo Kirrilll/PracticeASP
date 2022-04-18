@@ -71,10 +71,13 @@
     <Content Include="App_Data\TradeCompany_log.ldf">
       <DependentUpon>TradeCompany.mdf</DependentUpon>
     </Content>
+    <Content Include="BigComponent.aspx" />
+    <Content Include="ErrorPage.aspx" />
     <Content Include="Global.asax" />
     <Content Include="MainPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="PracticeMasterPage.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -103,12 +106,27 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="ServiceAsmx.asmx" />
+    <Content Include="SmallComponent.aspx" />
     <Content Include="Web.config" />
     <Content Include="Calculator.ascx" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigComponent.aspx.cs">
+      <DependentUpon>BigComponent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BigComponent.aspx.designer.cs">
+      <DependentUpon>BigComponent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -118,6 +136,13 @@
     </Compile>
     <Compile Include="MainPage.aspx.designer.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PracticeMasterPage.Master.cs">
+      <DependentUpon>PracticeMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PracticeMasterPage.Master.designer.cs">
+      <DependentUpon>PracticeMasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Calculator.ascx.cs">
@@ -130,6 +155,13 @@
     <Compile Include="ServiceAsmx.asmx.cs">
       <DependentUpon>ServiceAsmx.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SmallComponent.aspx.cs">
+      <DependentUpon>SmallComponent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SmallComponent.aspx.designer.cs">
+      <DependentUpon>SmallComponent.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

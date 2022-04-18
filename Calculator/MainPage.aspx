@@ -18,6 +18,8 @@
         </asp:GridView>
         <asp:GridView ID="GridViewOrders" runat="server">
         </asp:GridView>
+        <br />
+        <asp:Label ID="LabelFetchInformation" runat="server"></asp:Label>
     </form>
 </body>
 </html>

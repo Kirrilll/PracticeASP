@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PracticeMasterPage.master.cs" Inherits="Calculator.PracticeMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        body{
+            height: 100vw;
+        }
+        .header{
+            background-color: beige;
+            color: dimgrey;
+            padding: 40px;
+            text-align: center;
+            font-size: 30px;
+            border-radius: 20px
+        }
+        .content{
+            height: 100%;
+            background-color: darkgrey;
+        }
+        .content__first{
+            background-color: darksalmon;
+            border-radius: 15px;
+            padding: 15px;
+            
+        }
+        .content__second{
+            margin-top: 20px;
+            background-color: lightblue;
+            color: gray;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header class = "header">
+        Оригинальный заголовок
+    </header>
+    <form id="form1" runat="server">
+        <div class ="content">
+            <div class =" content__first">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    Место для вашего контента
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class =" content__second"> 
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
