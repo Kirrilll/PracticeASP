@@ -1,6 +1,8 @@
 ﻿
 /*-----Стили формы----------------*/
-
+html{
+    height: 100%;
+}
 .field-validation-error {
     color: #f00;
 }
@@ -26,17 +28,22 @@
     display: none;
 }
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-family: 'Roboto Mono';
     color: #292929;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100%;
 }
+.form-wrapper{
+width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .invite-panel {
     margin-top: 50px;
     padding: 15px;
@@ -92,8 +99,7 @@ button:focus{
     padding: 20px;
     text-align: center;
     background-color: #f697fc;
-    height: 100%;
-    width: 100%;
+    background-size: 100%;
 }
 .greeting__text{
     margin-top: 50px;
@@ -121,4 +127,30 @@ button:focus{
 .feedback__text{
     margin-top: 15px;
     font-size: 24px;
+}
+
+/*Стили панели с гостями*/
+.guests-title{
+    text-align: center;
+    font-weight: bold;
+}
+.guests{
+    padding: 30px;
+}
+.guest-card {
+    border-radius: 10px;
+    padding: 10px 20px;
+    -webkit-box-shadow: 7px 9px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 7px 9px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 7px 9px 8px 0px rgba(34, 60, 80, 0.2);
+    margin-bottom: 20px;
+}
+
+.agreed {
+    margin-top: 15px;
+    color: #b0ffab;
+}
+.disagreed {
+    color: #fa7d7d;
+    margin-top: 15px;
 }

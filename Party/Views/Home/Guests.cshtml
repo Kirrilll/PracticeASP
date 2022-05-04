@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PartyInvites.Entities.Guest>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Guests";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Guests</title>
+    <link rel="stylesheet" type="text/css" href="../Content/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&family=Roboto+Mono:ital,wght@0,100;0,300;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="guests">
+        <h2 class="guests__title title">Гости</h2>
+        @foreach (var item in Model)
+        {
+            <div class="guests__card guest-card">
+                <div class="guest-card__name">Имя: @item.Name</div>
+                <div class="guest-card__info">Почта: @item.Email</div>
+                <div class="guest-card__info">Почта: @item.Phone</div>
+                @if (item.IsAttend)
+                {
+                    <div class="agreed">Придет</div>
+                }
+                else
+                {
+                    <div class="disagreed">Не придет</div>
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>
