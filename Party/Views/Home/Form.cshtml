@@ -1,0 +1,53 @@
+﻿@model PartyInvites.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="../Content/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&family=Roboto+Mono:ital,wght@0,100;0,300;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="invite-panel">
+        <div>
+            <h4 class="invite-panel__title">Пригласительная анкета</h4>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+             @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Ваше имя:</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Ваш email:</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Ваш телефон:</label>
+                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Вы придете?</label>
+                @Html.DropDownListFor(x => x.IsAttend, new[] {
+                new SelectListItem() {Text = "Да, конечено я буду", Value = Boolean.TrueString},
+                new SelectListItem() {Text = "Нет, я не смогу", Value = Boolean.FalseString}
+                }, "Выберите вариант", new { @class = "form-control" })
+            </div>
+            <div class="submit-wrapper">
+                <input type="submit" value="Отправить форму RSVP" class="btn btn-success" />
+            </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
