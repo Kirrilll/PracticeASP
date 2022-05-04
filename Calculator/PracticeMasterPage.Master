@@ -51,6 +51,7 @@
             </div>
             <div class =" content__second"> 
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    Место для вашего контента 2
                 </asp:ContentPlaceHolder>
             </div>
         </div>

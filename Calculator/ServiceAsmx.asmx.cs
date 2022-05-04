@@ -19,16 +19,6 @@ namespace Calculator
     // [System.Web.Script.Services.ScriptService]
     public class ServiceAsmx : System.Web.Services.WebService
     {
-
-        //[WebMethod]
-        //public DataSet GetCustomers()
-        //{
-        //    SqlConnection connection = new SqlConnection();
-        //    SqlDataAdapter adapter;
-        //    DataSet customers;
-        //    string command = "Select * from Customer";
-        //}
-
         [WebMethod]
         public List<Customer> GetCustomers()
         {

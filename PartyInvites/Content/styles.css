@@ -1,0 +1,124 @@
+﻿
+/*-----Стили формы----------------*/
+
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    background-color: #fa7d7d;
+}
+
+.input-validation-valid {
+    background-color: #b0ffab;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Mono';
+    color: #292929;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow: hidden;
+}
+.invite-panel {
+    margin-top: 50px;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: #faedff;
+}
+.form-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+.invite-panel__title{
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+    background-color: #fff9cc;
+    font-weight: 700;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: none;
+    font-family: 'Roboto Mono';
+    font-style: italic;
+}
+button:focus{
+    outline: none;
+}
+.submit-wrapper{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.btn-success {
+    border-radius: 12px;
+    font-family: 'Roboto Mono';
+    font-weight: 700;
+    margin-top: 25px;
+    border: none;
+    background-color: #abff8f;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+/*-----Стили первой страницы----------------*/
+
+.greeting {
+    padding: 20px;
+    text-align: center;
+    background-color: #f697fc;
+    height: 100%;
+    width: 100%;
+}
+.greeting__text{
+    margin-top: 50px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.greeting__title{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/*-----Стили последней страницы----------------*/
+
+.feedback {
+    background-color: #ff85e2;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+.feedback__title{
+    margin-top: 50px;
+    font-size: 32px;
+}
+.feedback__text{
+    margin-top: 15px;
+    font-size: 24px;
+}
