@@ -44,7 +44,7 @@ namespace PartyInvites.Controllers
                 else
                 {
                     currGuest.Name = guest.Name;
-                    currGuest.IsAttend = (bool)guest.IsAttend;
+                    currGuest.IsAttend = guest.IsAttend ?? false;
                     currGuest.Email = guest.Email;
                     _repository.Entry(currGuest).State = EntityState.Modified;
                 }
